@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>傳統表單送出get</title>
+</head>
+<body>
+    <form action="a2021080208-query-string.php" method="get"><!-- 為了要測試php中的get才使用 -->
+        <input type="number" name="a" placeholder="a">+ <input type="number" name="b" placeholder="b">
+        <button>=</button>
+        <!-- 這支程式不要用livesever看，要用阿帕契才行,placeholder為顯示提示字 -->
+        <!-- button按鈕如果沒有特別設屬性則預設屬性為submit即送出意思 -->
+    </form>
+    <br>
+    <a href="a2021080208-query-string.php?a=10&b=20">算10加20</a>
+</body>
+</html>
+
+
+    
