@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>傳統表單送出get</title>
+</head>
+<body>
+    <!-- <form onsubmit="return false">   <-!- 不要讓表單送出去 -->
+        <!-- <input type="number" name="a" placeholder="a">+ 
+        <input type="number" name="b" placeholder="b">
+        <button type="button">=</button> -->
+        <!-- button按鈕設定屬性為button則為只是顆按紐不會有送出的意思 -->
+    <!-- </form> -->
+    
+    <form onsubmit="ajaxSend(); return false">   
+        <input type="number" name="a" placeholder="a">+ <input type="number" name="b" placeholder="b">
+        <button>=</button> <span id="result"></span>
+        <!-- 另一種寫法，這樣button就不用設定屬性 -->
+        
+        
+    </form>
+    <br>
+<script>
+    // 請比較原檔a2021080212-ajax-get.html
+        const af =document.querySelector ('input [name=a]');
+        const bf =document.querySelector ('input [name=b]');
+        const result = document.querySelector('#result');
+        
+        function ajaxSend() {
+            const sp=new URLSearchParams();
+            // 這個函式有自動跳脫的功能
+
+            sp.set('a',af.value);
+            sp.set('b',bf.value);
+            
+            fetch('a2021080208-query-string.php?'+ sp.toString())
+            //預設method就是get所以不用再去設定，也沒有body，從頭到尾只有URL
+              .then(r=>r.text()) 
+              .then(txt=>{      
+                  result.innerText=txt;
+               });
+         
+         }
+            
+
+
+</script>
+</body>
+</html>
+
+

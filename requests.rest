@@ -1,0 +1,19 @@
+# 做一個客戶端測試，假裝是瀏覽器的概念
+
+GET http://localhost/mfee19-php/testphp/a2021080208-query-string.php?a=5&b=10
+
+
+
+### 分隔符號
+
+
+GET http://localhost/mfee19-php/testphp/a2021080214-for.php
+
+
+### 分隔符號
+
+POST http://localhost/mfee19-php/testphp/a2021080402-post-data.php
+Content-Type: application/x-www-form-urlencoded
+# 此資料是在network中點該file的headers中的requestHeaders 
+
+a=100&b=66

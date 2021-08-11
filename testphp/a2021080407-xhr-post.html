@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>傳統表單送出get</title>
+</head>
+<body>
+    <!-- <form onsubmit="return false">   <-!- 不要讓表單送出去 -->
+        <!-- <input type="number" name="a" placeholder="a">+ 
+        <input type="number" name="b" placeholder="b">
+        <button type="button">=</button> -->
+        <!-- button按鈕設定屬性為button則為只是顆按紐不會有送出的意思 -->
+    <!-- </form> -->
+    
+    <form onsubmit="ajaxSend(); return false">   
+        <input type="number" name="a" placeholder="a">+ <input type="number" name="b" placeholder="b">
+        <button>=</button> <span id="result"></span>
+        <!-- 另一種寫法，這樣button就不用設定屬性 -->
+        
+        
+    </form>
+    <br>
+<script>
+    // 請比較原檔a2021080212-ajax-get.html
+        const af =document.querySelector ('input [name=a]');
+        const bf =document.querySelector ('input [name=b]');
+        const result = document.querySelector('#result');
+        
+        function ajaxSend() {
+            const sp=new URLSearchParams();
+            // 這個函式有自動跳脫的功能
+
+            sp.set('a',af.value);
+            sp.set('b',bf.value);
+
+            const xhr = new XMLHttpRequest();
+            //藉由 XMLHttpRequest（XHR）物件的方式來存取伺服器端的資料，可以讓你直接經由指定的 URL 擷取資料卻不用刷新整個網頁。這樣一來當想要更新網頁中的部分資料時，不再需要藉由刷新整個頁面的方法而中斷使用者的操作。
+
+            xhr.onload = function(){
+                result.innerHTML=xhr.responseText;
+            }
+        
+            xhr.open('POST','a2021080402-post-data.php');
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');//設定檔頭
+            xhr.send(sp);
+            //setRequestHeader('headers的屬性名稱','headers的值') 方法用來設定 HTTP 的檔頭請求。當使用 setRequestHeader() 的時候，必須在 open() (en-US) 之後呼叫，同時也必須在 send() (en-US) 之前呼叫。如果這個方法被呼叫了許多次，且設定的檔頭是一樣的，那所有設定的值會被合併成一個單一的檔頭請求。
+            // send(放body)urlencoded的字串
+         
+         }
+            // *結論用fetch比較簡便點*
+
+
+</script>
+</body>
+</html>
+
+

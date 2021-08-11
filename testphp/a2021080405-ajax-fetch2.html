@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document</title>
+</head>
+<body>
+    <form name="form1" onsubmit="sendData(); return false;">
+     
+        <input type="number" name="a" placeholder="a">+ 
+        <input type="number" name="b" placeholder="b">
+        <button>=</button>
+       
+    </form>
+    
+    <div id="info"></div>
+
+    <script>
+        function sendData(){
+            const fd= new FormData(document.form1); 
+            
+            feteh('a2021080402-post-data.php',{method:'POST',body:fd,
+            }).then(r=>r.json()) 
+              .then(obj=>{      
+        //    依據前面你呼叫的方式(text,json)而拿到的內容類型不一樣,json拿到不是物件就是陣列
+               info.innerText=obj.result;
+            });
+         
+        }
+
+    </script>
+</body>
+</html>
+
+
+    
