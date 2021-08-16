@@ -1,6 +1,7 @@
 <?php
 
 namespace PhpOffice\PhpSpreadsheet;
+//路徑宣告，代表此Php檔案在PhpOffice底下的PhpSpreadsheet類別。
 
 use PhpOffice\PhpSpreadsheet\Calculation\Calculation;
 use PhpOffice\PhpSpreadsheet\Shared\StringHelper;
@@ -9,9 +10,10 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Iterator;
 use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
 class Spreadsheet
+//定義類別
 {
     // Allowable values for workbook window visilbity
-    const VISIBILITY_VISIBLE = 'visible';
+    const VISIBILITY_VISIBLE = 'visible';// 也可定義常數
     const VISIBILITY_HIDDEN = 'hidden';
     const VISIBILITY_VERY_HIDDEN = 'veryHidden';
 
@@ -19,6 +21,7 @@ class Spreadsheet
     private const DEFINED_NAME_IS_FORMULA = true;
 
     private static $workbookViewVisibilityValues = [
+        // private私有屬性;static屬於類別的屬性 
         self::VISIBILITY_VISIBLE,
         self::VISIBILITY_HIDDEN,
         self::VISIBILITY_VERY_HIDDEN,

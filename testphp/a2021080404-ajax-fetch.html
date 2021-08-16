@@ -21,7 +21,7 @@
         function sendData(){
             const fd= new FormData(document.form1); //表單物件,前方form做出的是有外觀的表單，gormData做得的是沒有外觀的，直接在記憶體裡的，無法自己發送。將有形體的表單form1當作參照參數設定，將裡面有效的表單欄位直接抓進來。所以當fd在運行的時候會直接將form1直接抓進來。
             
-            feteh('a2021080402-post-data.php',{method:'POST',body:fd,
+            fetch('a2021080402-post-data.php',{method:'POST',body:fd,
             }).then(function(response){
             return response.text();
             }).then(function(txt){
@@ -30,7 +30,7 @@
             //fetch()是一個全域的方法，包含了需要 fetch 的網址和對應的屬性設定 ( 例如 method、headers、mode、body...等，最基本的寫法屬性不一定要填 )，執行之後會送出 Request，如果得到回應就會回傳帶有 Response 的 Promise 物件，使用 then 將回傳值傳遞下去。用相對路徑的方式，feteh不需要設定ContentType，她自己會偵測body內容
 
             // 以下可以縮寫成這樣
-            feteh('a2021080402-post-data.php',{method:'POST',body:fd,
+            fetch('a2021080402-post-data.php',{method:'POST',body:fd,
             }).then(r=>r.text()) //第一排的then就是單純的拿到一個respones物件，然後呼叫respones的text
               .then(txt=>{      //真正解析完的物件會在這，txt這裡才是要拿到的文字內容
                  info.innerText=txt;
