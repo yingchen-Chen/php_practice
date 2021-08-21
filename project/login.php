@@ -27,7 +27,7 @@
                 <div class="card-body">
                     <h5 class="card-title">登入</h5>
 
-                    <form name="forml" onsubmit="sendForm(); return false;">
+                    <form id="form1" name="forml" onsubmit="sendForm(); return false;">
                     <!-- html form 中的onsubmit在點submit按鈕時被觸發，如果return false;則結果不會被提交到action中去（也就是提交動作不會發生），如果不返回或者返回true，則執行提交動作。onsubmit和action兩個都是提交時出發的，不過：onsubmit是在表單中的確認按鈕被點選時出發的，一般是js函式，而action是在按鈕被點選之後出發的，一般是出發前台提交到後台的請求，而引起後台的回應。
                     
                     1.如果html中使用form的onsubmi屬性t進行提交前的資料驗證，需要驗證函式返回一個布林值，而且要寫成onsubmit=”return 函式名();” return不能少，否則無論函式返回true還是false都能夠提交，達不到驗證的目的。
@@ -61,38 +61,36 @@
         let isPass = true;
         // 先預設是true會通過，然後通過檢查，如果有誤就false;如果相反先寫false然後下方一堆條件再true通過則需要設很多判斷式，比較麻煩。
 
-        document.getElementById("account").nextElementSibling.style.display ='none';
-        document.getElementById("password").nextElementSibling.style.display ='none';
+        document.getElementById('account').nextElementSibling.style.display ='none';
+        document.getElementById('password').nextElementSibling.style.display ='none';
         //表單檢查前要先把它關掉，如果上次檢查有誤，出現紅色提示字，那這次就算填了正確的資料，也會是紅色的提示字。所以要讓他reset讓她回復成原來的狀態。
 
         // document.getElementById 在 DOM 應用中相當的常見，用來取得頁面中特定 id 的元素值，與 document.getElementById 類似的語法還包含了像是 document.getElementByName 或是 document.getElementByTagName
 
         // document.getElementById 基本語法:document.getElementById("id");
-
-        // if(! document.form1.account.value)原本
-        if(! document.getElementById("account").value){
-            document.getElementById("account").nextElementSibling.style.display ='block';
-            isPass = false;
+        if(! document.getElementById('account').value){
+            document.getElementById('account').nextElementSibling.style.display ='block';
+            isPass = false ;
             //.form1.account.原本
             // form1表單的account欄位的值
         }
         // if(! document.form1.password.value)
-        if(! document.getElementById("password").value){
-            document.getElementById("password").nextElementSibling.style.display ='block';
-            isPass = false;
+        if(! document.getElementById('password').value){
+            document.getElementById('password').nextElementSibling.style.display ='block';
+            isPass = false ;
             // .form1.password.
         }
         
-        if(isPass) {
+        if(isPass){
 
-            const fd = new FormData(document.form1);
+            const fd = new FormData(document.getElementById("form1"));
 
             fetch('login-api.php',{
                 method:'POST',
                 body:fd
             })
-            .then(r=>json())
-            .then(obj=>{
+            .then(r => r.json())
+            .then(obj => {
                 console.log('result', obj);
                 if(obj.success){
                     location.href ='index_.php'; //跳轉到別的頁面

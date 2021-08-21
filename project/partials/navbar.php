@@ -9,10 +9,10 @@
           <ul class="navbar-nav mr-auto"> 
           <!-- mr-auto是marginRight-auto意即右方有一個margin而靠左 -->
             <li class="nav-item active">
-              <a class="nav-link" href="data-list.php">資料列表</a>
+              <a class="nav-link" href="data-list.php">藝廊</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link" href="data-insert.php">新增</a>
             </li>
             
           </ul>
@@ -22,7 +22,7 @@
             <?php if(isset($_SESSION['user'])): ?>
             <!-- 沒有登入的時後才顯示這兩個按鈕 -->
             <li class="nav-item active">
-              <a class="nav-link"><?= $_SESSION['user']['nikname']?></a>
+              <a class="nav-link"><?= $_SESSION['user']['nickname']?></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="logout.php">登出</a>

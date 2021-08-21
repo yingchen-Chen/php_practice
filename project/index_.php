@@ -1,11 +1,11 @@
 <?php
     include __DIR__.'./partials/init.php';
-    $title = '燈燈的';
+    $title = '設計師的';
 ?>
 <?php include __DIR__.'./partials/html-head.php'; ?>
 <?php include __DIR__.'./partials/navbar.php'; ?>
 <div class="container">
-    <h2>Hello GODIVA :)</h2>
+    <h2>Hello creator :)</h2>
 </div>
 <?php include __DIR__.'./partials/scripts.php'; ?>
 <?php include __DIR__.'./partials/html-foot.php'; ?>
