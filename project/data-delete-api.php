@@ -1,4 +1,5 @@
 <?php
+// ALTER TABLE `hw_designer` ADD `artwork` VARCHAR(255) NULL AFTER `sid`; 記得曾加一個放檔案的
 include __DIR__ . './partials/init.php';
 
 $sid = isset($_GET['sid']) ? intval($_GET['sid']) : 0;

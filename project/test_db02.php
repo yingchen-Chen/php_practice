@@ -3,7 +3,7 @@
 require __DIR__. '/partials/init.php';
 
 // 做資料表的存取
-$stmt=$pdo->query("SELECT * FROM hw_designer LIMIT 4"); //"SELECT*FROM hw_designer"直接放你要加進來的資料名稱(SQL);
+$stmt=$pdo->query("SELECT * FROM hw_designer LIMIT 1"); //"SELECT*FROM hw_designer"直接放你要加進來的資料名稱(SQL);
 // 使用$pdo->query就是給SQL指定一個代理人也就是PDOstatement;
 // LIMIT 4代表最多拿出4筆資料，假設總共5萬多筆，寫了fetchALL會GG
 //這個結果是拿到一個操作資料的statement物件

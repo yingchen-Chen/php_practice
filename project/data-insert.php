@@ -1,6 +1,7 @@
 <?php
+// ALTER TABLE `hw_designer` ADD `artwork` VARCHAR(255) NULL AFTER `sid`; 記得曾加一個放檔案的
 include __DIR__ . './partials/init.php';
-$title = '藝廊';
+$title = '新增資料';
 ?>
 <?php include __DIR__ . './partials/html-head.php'; ?>
 <?php include __DIR__ . './partials/navbar.php'; ?>
@@ -14,12 +15,18 @@ $title = '藝廊';
         <div class="card">
 
             <div class="card-body">
-                <h5 class="card-title">藝廊</h5>
+                <h5 class="card-title">新增資料</h5>
 
                 <form name="form1" onsubmit="checkForm();return false;">
                     <!--onsubmit:表單送出去之前觸發; return false;返回錯誤的處理結果;終止處理;阻止提交表單;阻止執行預設的行為 -->
                     <div class="form-group">
-                        <label for="name">姓名 *</label>
+                        <label for="artwork	">作品圖檔 *</label>
+                        <input type="file" class="form-control" id="artwork" name="artwork">
+                        <!-- required必填的欄位，可加也可不加 -->
+                        <small class="form-text"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">作品名稱 *</label>
                         <input type="text" class="form-control" id="name" name="name">
                         <!-- required必填的欄位，可加也可不加 -->
                         <small class="form-text"></small>
@@ -34,14 +41,12 @@ $title = '藝廊';
                         <input type="text" class="form-control" id="mobile" name="mobile">
                         <small class="form-text"></small>
                     </div>
-                    
-                    
+                
                     <div class="form-group">
                         <label for="directions">說明</label>
                         <input type="text" class="form-control" id="directions" name="directions">
                         <small class="form-text"></small>
                     </div>
-                    
 
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
@@ -79,9 +84,12 @@ $title = '藝廊';
         //如果格式不符，要有欄位提示的不同外觀
 
         let isPass = true;
-        if (name.value.length < 2) {
+       
+            
+        
+        if (name.value.length < 1) {
             isPass = false;
-            name.nextElementSibling.innerHTML = '請填寫正確的姓名';
+            name.nextElementSibling.innerHTML = '請填寫的作品名稱';
             name.style.border = '1px red solid';
 
         }
@@ -101,7 +109,6 @@ $title = '藝廊';
                     .then(obj => {
                         console.log(obj);
                         if(obj.success){
-                            console.log("success! ");
                             location.href ='data-list.php'; //新增資料成功則跳轉至data-list頁面
 
                         }else{

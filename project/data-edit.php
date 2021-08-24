@@ -1,4 +1,5 @@
 <?php
+// ALTER TABLE `hw_designer` ADD `artwork` VARCHAR(255) NULL AFTER `sid`; 記得曾加一個放檔案的
 include __DIR__ . './partials/init.php';
 $title = '修改資料';
 
@@ -34,7 +35,12 @@ if(empty($r)){
                      <!--onsubmit:表單送出去之前觸發; return false;返回錯誤的處理結果;終止處理;阻止提交表單;阻止執行預設的行為 -->
                     <input type="hidden" name="sid" value="<?= $r['sid'] ?>">
                     <div class="form-group">
-                        <label for="name">姓名 *</label>
+                        <label for="artwork">作品圖檔 *</label>
+                        <input type="file" class="form-control" id="artwork" name="artwork" accept="image/*" ?>
+                        <small class="form-text"></small>
+
+                    <div class="form-group">
+                        <label for="name">作品名稱 *</label>
                         <input type="text" class="form-control" id="name" name="name" value="<?= htmlentities($r['name']) ?>">
                         <!--htmlentities把字符轉換為HTML實體 -->
                         <small class="form-text"></small>
@@ -43,9 +49,10 @@ if(empty($r)){
                         <label for="email">電子郵件 *</label>
                         <input type="text" class="form-control" id="email" name="email" value="<?= htmlentities($r['email']) ?>">
                         <small class="form-text "></small>
+                        <!-- 如果要鎖住不給更改就把id跟name刪掉，輸入disable -->
                     </div>
                     <div class="form-group">
-                        <label for="mobile">手機號碼</label>
+                        <label for="mobile">手機</label>
                         <input type="text" class="form-control" id="mobile" name="mobile" value="<?= htmlentities($r['mobile']) ?>">
                         <small class="form-text"></small>
                     </div>
@@ -94,9 +101,11 @@ if(empty($r)){
         //如果格式不符，要有欄位提示的不同外觀
 
         let isPass = true;
-        if (name.value.length < 2) {
+
+        
+        if (name.value.length < 1) {
             isPass = false;
-            name.nextElementSibling.innerHTML = '請填寫正確的姓名';
+            name.nextElementSibling.innerHTML = '請填寫作品名稱';
             name.style.border = '1px red solid';
 
         }

@@ -25,6 +25,9 @@
               <a class="nav-link"><?= $_SESSION['user']['nickname']?></a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="profile-edit.php">編輯個人資料</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="logout.php">登出</a>
             </li>
             <?php else: ?>

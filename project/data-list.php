@@ -1,6 +1,6 @@
 <?php
     include __DIR__. '/partials/init.php';
-    $title = '藝廊';
+    $title = '資料列表';
 
     // 固定每一頁最多幾筆
     $perPage = 5;
@@ -10,7 +10,6 @@
 
     // 關鍵字查詢
     $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
-    //就不能用轉換成整數intval()，因為是字串
 
     
     $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
@@ -25,6 +24,7 @@
 
         $qs['keyword'] = $keyword;
     }
+    //關鍵字篩選
 
 
     // 總共有幾筆
@@ -149,15 +149,16 @@
                  <!-- table-bordered加邊框屬性 -->
                 <thead>
                 <tr>
-                     <!-- `sid`, `name`, `email`, `mobile`, `upload date`, `directions`, `created_at` -->
+                     <!-- `sid`, `name`, `email`, `mobile`, `directions`, `created_at` -->
                     <th scope="col"><i class="fas fa-trash-alt"></i></th>
                     <th scope="col"><i class="fas fa-trash-alt"> ajax</i></th>
                     <th scope="col">sid</th>
+                    <th scope="col">artwork</th>
                     <th scope="col">name</th>
                     <th scope="col">email</th>
                     <th scope="col">mobile</th>
                     <th scope="col">directions</th>
-                    <th scope="col">created_at</th>
+                    <th scope="col">create_at</th>
                     <th scope="col"><i class="fas fa-edit"></i></th>
                 </tr>
                 </thead>
@@ -175,11 +176,16 @@
                         <i class="fas fa-trash-alt ajaxDelete"></i>
                     </td>
                     <td><?= $r['sid'] ?></td>
+                    <td><img src=<?= $r['artwork'] ?> width="140" height="140"></td>
                     <td><?= $r['name'] ?></td>
                     <td><?= $r['email'] ?></td>
                     <td><?= $r['mobile'] ?></td>
+                    
+                    <!--
+                    <td><?= strip_tags($r['directions']) ?></td>
+                    -->
                     <td><?= htmlentities($r['directions']) ?></td>
-                    <td><?= $r['created_at'] ?></td>
+                    <td><?= ($r['created_at']) ?></td>
                     <td>
                         <a href="data-edit.php?sid=<?= $r['sid'] ?>">
                             <i class="fas fa-edit"></i>

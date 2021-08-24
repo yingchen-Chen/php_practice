@@ -9,7 +9,7 @@ $users =[
     ],
     'orange' =>[
         'pw'=>'123',
-        'nickname'=>'大吉子',
+        'nickname'=>'一顆橘子',
     ],
    
 ];
